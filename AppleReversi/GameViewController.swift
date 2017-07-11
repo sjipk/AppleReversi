@@ -14,6 +14,19 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /// debug用表示
+        let board = Board()
+        print(board)
+        
+        /// Moveクラスのインスタンス作成
+        let move = Move(color: .Black, row: 3, column: 2)
+        /// 右方向に裏返すことができる石をコンソールに出力
+        var count = move.countFlippableDisks(direction: (vertical: .Hold, horizontal: .Forward), cells: board.cells)
+        print(count)
+        /// 上方向に裏返すことができる石をコンソールに出力
+        count = move.countFlippableDisks(direction: (vertical: .Forward, horizontal: .Hold), cells: board.cells)
+        print(count)
+        
         if let view = self.view as! SKView? {
             // Load the SKScene
             let scene = GameScene()
@@ -29,6 +42,9 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        
+        board.makeMove(move: move)
+        print(board)
     }
 
     override var shouldAutorotate: Bool {
