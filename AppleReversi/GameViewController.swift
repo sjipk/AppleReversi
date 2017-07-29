@@ -10,10 +10,12 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    
+    private var scene: GameScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+/*
         /// debug用表示
         let board = Board()
         print(board)
@@ -26,14 +28,15 @@ class GameViewController: UIViewController {
         /// 上方向に裏返すことができる石をコンソールに出力
         count = move.countFlippableDisks(direction: (vertical: .Forward, horizontal: .Hold), cells: board.cells)
         print(count)
-        
+*/
         if let view = self.view as! SKView? {
             // Load the SKScene
-            let scene = GameScene()
+            scene = GameScene()
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             scene.size = view.frame.size
-                
+//            scene.size = CGSize(width: 375, height: 667)
+            
             // Present the scene
             view.presentScene(scene)
             
@@ -42,9 +45,11 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        
+/*
         board.makeMove(move: move)
         print(board)
+ */
+        self.scene.initBoard()
     }
 
     override var shouldAutorotate: Bool {
