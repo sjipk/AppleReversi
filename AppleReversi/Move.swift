@@ -60,4 +60,28 @@ class Move {
         }
     }
     
+    /// 指定された場所に石を置ける場合trueを返す
+    func canPlace(cells: Array2D<CellState>) -> Bool {
+        if let state = cells[self.row, self.column] {
+            if state != .Empty {
+                return false
+            }
+        }
+        
+        for vertical in Line.allValues {
+            for horizontal in Line.allValues {
+                if vertical == .Hold && horizontal == .Hold {
+                    continue
+                }
+                
+                if 0 < self.countFlippableDisks(direction: (vertical, horizontal), cells: cells) {
+                    return true
+                }
+            }
+        }
+        
+        // 全方向に裏返せる石がない
+        return false
+    }
+    
 }

@@ -65,4 +65,17 @@ class Board : CustomStringConvertible {
         // 石を置く
         self.cells[move.row, move.column] = move.color
     }
+    
+    /// 指定された状態のセルの数を返す
+    func countCells(state: CellState) -> Int {
+        var count = 0
+        for row in 0..<self.cells.rows {
+            for column in 0..<self.cells.columns {
+                if self.cells[row, column] == state {
+                    count += 1
+                }
+            }
+        }
+        return count
+    }
 }
