@@ -12,6 +12,8 @@ import SpriteKit
 class GameViewController: UIViewController {
     
     private var scene: GameScene!
+    
+    var cpu: ComputerPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,8 @@ class GameViewController: UIViewController {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             scene.size = view.frame.size
-//            scene.size = CGSize(width: 375, height: 667)
+            
+//            DLog(obj: scene.size as AnyObject)
             
             // Present the scene
             view.presentScene(scene)
@@ -45,11 +48,41 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        
+//        self.scene.gameFinishHandler = self.showGameResult
+        self.scene.switchTurnHandler = self.switchTurn
+        
 /*
         board.makeMove(move: move)
         print(board)
  */
+        let evaluate = countColor
+        let maxDepth = 2
+        let search = MiniMaxMethod(evaluate: evaluate, maxDepth: maxDepth)
+        self.cpu = ComputerPlayer(color: .White, search: search)
         self.scene.initBoard()
+        
+//        self.scene.showGameResult()
+    }
+    
+    func switchTurn() {
+        if self.scene.nextColor == self.cpu.color {
+            self.scene.isUserInteractionEnabled = false
+            Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(GameViewController.makeMoveByComputer), userInfo: nil, repeats: false)
+        }
+    }
+    
+    // コンピュータプレイヤーに一手打たせる
+    func makeMoveByComputer() {
+        let nextMove = self.cpu.selectMove(board: self.scene.board!)
+        self.scene.makeMove(move: nextMove!)
+        
+        // プレイヤーが合法な手を打てない場合は、プレイヤーのターンをスキップする
+        if self.scene.board.hasGameFinished() == false && self.scene.board.existsValidMove(color: self.cpu.color.opponent) == false {
+            self.makeMoveByComputer()
+        }
+        
+        self.scene.isUserInteractionEnabled = true
     }
 
     override var shouldAutorotate: Bool {
