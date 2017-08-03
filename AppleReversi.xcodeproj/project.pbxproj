@@ -10,6 +10,7 @@
 		CE0596941F143961006D8995 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0596931F143961006D8995 /* CellState.swift */; };
 		CE0596961F143A86006D8995 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0596951F143A86006D8995 /* Board.swift */; };
 		CE0596981F14544D006D8995 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0596971F14544D006D8995 /* Move.swift */; };
+		CE7EEDCA1F2F6D420014D78E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7EEDC91F2F6D420014D78E /* Debug.swift */; };
 		CEAC43941F0CC39600F56B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC43931F0CC39600F56B70 /* AppDelegate.swift */; };
 		CEAC43981F0CC39600F56B70 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEAC43971F0CC39600F56B70 /* Actions.sks */; };
 		CEAC439A1F0CC39600F56B70 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC43991F0CC39600F56B70 /* GameScene.swift */; };
@@ -19,12 +20,16 @@
 		CEAC43A41F0CC39600F56B70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAC43A21F0CC39600F56B70 /* LaunchScreen.storyboard */; };
 		CEAC43AC1F0CC84600F56B70 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC43AB1F0CC84600F56B70 /* Array2D.swift */; };
 		CEAC43AE1F0CC92F00F56B70 /* Images.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CEAC43AD1F0CC92F00F56B70 /* Images.atlas */; };
+		CEE106211F2CC7FE00A5A791 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE106201F2CC7FE00A5A791 /* Evaluation.swift */; };
+		CEE106231F2CCFB100A5A791 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE106221F2CCFB100A5A791 /* Search.swift */; };
+		CEE106251F2CD0BE00A5A791 /* ComputerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE106241F2CD0BE00A5A791 /* ComputerPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE0596931F143961006D8995 /* CellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellState.swift; sourceTree = "<group>"; };
 		CE0596951F143A86006D8995 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		CE0596971F14544D006D8995 /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		CE7EEDC91F2F6D420014D78E /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		CEAC43901F0CC39600F56B70 /* AppleReversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleReversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAC43931F0CC39600F56B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAC43971F0CC39600F56B70 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -36,6 +41,9 @@
 		CEAC43A51F0CC39600F56B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAC43AB1F0CC84600F56B70 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		CEAC43AD1F0CC92F00F56B70 /* Images.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Images.atlas; sourceTree = "<group>"; };
+		CEE106201F2CC7FE00A5A791 /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
+		CEE106221F2CCFB100A5A791 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		CEE106241F2CD0BE00A5A791 /* ComputerPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,10 @@
 				CEAC43971F0CC39600F56B70 /* Actions.sks */,
 				CEAC43991F0CC39600F56B70 /* GameScene.swift */,
 				CEAC439B1F0CC39600F56B70 /* GameViewController.swift */,
+				CEE106201F2CC7FE00A5A791 /* Evaluation.swift */,
+				CEE106221F2CCFB100A5A791 /* Search.swift */,
+				CEE106241F2CD0BE00A5A791 /* ComputerPlayer.swift */,
+				CE7EEDC91F2F6D420014D78E /* Debug.swift */,
 				CEAC439D1F0CC39600F56B70 /* Main.storyboard */,
 				CEAC43A01F0CC39600F56B70 /* Assets.xcassets */,
 				CEAC43AD1F0CC92F00F56B70 /* Images.atlas */,
@@ -168,11 +180,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE106231F2CCFB100A5A791 /* Search.swift in Sources */,
 				CE0596981F14544D006D8995 /* Move.swift in Sources */,
+				CE7EEDCA1F2F6D420014D78E /* Debug.swift in Sources */,
 				CEAC439A1F0CC39600F56B70 /* GameScene.swift in Sources */,
 				CE0596941F143961006D8995 /* CellState.swift in Sources */,
+				CEE106211F2CC7FE00A5A791 /* Evaluation.swift in Sources */,
 				CE0596961F143A86006D8995 /* Board.swift in Sources */,
 				CEAC43AC1F0CC84600F56B70 /* Array2D.swift in Sources */,
+				CEE106251F2CD0BE00A5A791 /* ComputerPlayer.swift in Sources */,
 				CEAC439C1F0CC39600F56B70 /* GameViewController.swift in Sources */,
 				CEAC43941F0CC39600F56B70 /* AppDelegate.swift in Sources */,
 			);
