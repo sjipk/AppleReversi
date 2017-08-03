@@ -14,10 +14,15 @@ let BoardSize = 8
 /// 8 * 8 の盤面
 class Board : CustomStringConvertible {
     
-    /// 盤上のすべてのセルの状態を保持する二次元配列
+    // 盤上のすべてのセルの状態を保持する二次元配列
     var cells: Array2D<CellState>
+
+    // イニシャライザ
+    init(cells: Array2D<CellState>) {
+        self.cells = cells
+    }
     
-    /// イニシャライザ
+    // イニシャライザ
     init() {
         self.cells = Array2D<CellState>(rows: BoardSize, columns: BoardSize, repeatedValue: .Empty)
         
@@ -25,6 +30,26 @@ class Board : CustomStringConvertible {
         self.cells[4, 3] = .Black
         self.cells[3, 3] = .White
         self.cells[4, 4] = .White
+    }
+    
+    func clone() -> Board {
+        return Board(cells: self.cells)
+    }
+    
+    // 指定された色の合法な手の一覧を返す
+    func getValidMoves(color: CellState) -> [Move] {
+        var moves = Array<Move>()
+        
+        for row in 0..<BoardSize {
+            for column in 0..<BoardSize {
+                let move = Move(color: color, row: row, column: column)
+                if move.canPlace(cells: self.cells) {
+                    moves.append(move)
+                }
+            }
+        }
+        
+        return moves
     }
     
     var description: String {
@@ -77,5 +102,24 @@ class Board : CustomStringConvertible {
             }
         }
         return count
+    }
+    
+    /// ゲームが終了した場合、trueを返す
+    func hasGameFinished() -> Bool {
+        return self.existsValidMove(color: .Black) == false && self.existsValidMove(color: .White) == false
+    }
+    
+    /// 合法な手が存在する場合、trueを返す
+    func existsValidMove(color: CellState) -> Bool {
+        
+        for row in 0..<BoardSize {
+            for column in 0..<BoardSize {
+                let move = Move(color: color, row: row, column: column)
+                if move.canPlace(cells: self.cells) {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }
