@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     var cpu: ComputerPlayer!
 
     override func viewDidLoad() {
+        TRACE1()
         super.viewDidLoad()
 /*
         /// debug用表示
@@ -57,23 +58,30 @@ class GameViewController: UIViewController {
         print(board)
  */
         let evaluate = countColor
-        let maxDepth = 2
+        let maxDepth = 3
         let search = MiniMaxMethod(evaluate: evaluate, maxDepth: maxDepth)
         self.cpu = ComputerPlayer(color: .White, search: search)
         self.scene.initBoard()
         
 //        self.scene.showGameResult()
+        TRACE2()
+        DSpace(obj: "" as AnyObject)
     }
     
     func switchTurn() {
+        TRACE1()
         if self.scene.nextColor == self.cpu.color {
             self.scene.isUserInteractionEnabled = false
             Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(GameViewController.makeMoveByComputer), userInfo: nil, repeats: false)
         }
+        TRACE2()
     }
     
     // コンピュータプレイヤーに一手打たせる
     func makeMoveByComputer() {
+        TRACE1()
+        DSpace(obj: "コンピュータプレイヤーに一手打たせる" as AnyObject)
+//        print(self.scene.board)
         let nextMove = self.cpu.selectMove(board: self.scene.board!)
         self.scene.makeMove(move: nextMove!)
         
@@ -83,6 +91,7 @@ class GameViewController: UIViewController {
         }
         
         self.scene.isUserInteractionEnabled = true
+        TRACE2()
     }
 
     override var shouldAutorotate: Bool {

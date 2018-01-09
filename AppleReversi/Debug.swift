@@ -17,6 +17,18 @@ func DLog(obj: AnyObject?, function: String = #function, line: Int = #line) {
     #endif
 }
 
+func DSpace(obj: AnyObject?) {
+    #if DEBUG
+        print("\(obj!)")
+    #endif
+}
+
+func TRACE0(function: String = #function) {
+    #if DEBUG
+        print("Calling [func:\(function)]")
+    #endif
+}
+
 func TRACE1(function: String = #function) {
     #if DEBUG
         print("Calling [func:\(function)] Start")

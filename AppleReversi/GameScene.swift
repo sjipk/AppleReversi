@@ -51,6 +51,7 @@ class GameScene: SKScene {
     var switchTurnHandler: (() -> ())?
     
     override func didMove(to view: SKView) {
+        TRACE1()
         //基準点を中心に設定
         super.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
@@ -69,9 +70,13 @@ class GameScene: SKScene {
         
         self.disksLayer.position = layerPosition
         self.gameLayer.addChild(self.disksLayer)
+        TRACE2()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        TRACE1()
+        DSpace(obj: "自分が一手打つ" as AnyObject)
+        
         let touch = touches.first
         let location = touch?.location(in: self.disksLayer)
         
@@ -101,20 +106,24 @@ class GameScene: SKScene {
                 self.nextColor = self.nextColor.opponent
  */
                 self.makeMove(move: move)
+                print(self.board)
+                
                 if self.board.hasGameFinished() == false {
                     self.switchTurnHandler?()
                 }
             }
         }
+        TRACE2()
     }
     
     /// 手を打つ
-    func makeMove(move: Move) {
-        
-        // 盤上に手を打つ
-        self.board.makeMove(move: move)
-        
-//        print(self.board.countCells(state: self.nextColor))
+    func makeMove(move: Move?) {
+        TRACE1()
+        if move != nil {
+            // 盤上に手を打つ
+            self.board.makeMove(move: move!)
+//          print(self.board.countCells(state: self.nextColor))
+        }
         
         // 今打った手とは反対の色に変える
         self.nextColor = self.nextColor.opponent
@@ -126,6 +135,7 @@ class GameScene: SKScene {
             // ゲーム終了時
             self.showGameResult()
         }
+        TRACE2()
     }
     
     func convertPointOnBoard(point: CGPoint) -> (row: Int, column: Int)? {
@@ -180,9 +190,11 @@ class GameScene: SKScene {
     
     /// 盤の初期化
     func initBoard() {
+        TRACE1()
         self.board = Board()
         self.updateDiskNodes()
         self.nextColor = .Black
+        TRACE2()
     }
     
     /// 現在の状態で、石の表示を更新する
